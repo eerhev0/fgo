@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灰冰 | Furry扩列站</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑",sans-serif;
+        }
+        body{
+            background: #080812;
+            color: #eee;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a33 0%, #080812 70%);
+        }
+        .card{
+            width: 100%;
+            max-width: 420px;
+            background: rgba(20,20,40,0.7);
+            border: 1px solid #4466ff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 0 25px #3355ff66;
+        }
+        .avatar{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #5577ff;
+            margin: 0 auto 20px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #88aaff;
+        }
+        h1{
+            font-size: 28px;
+            color: #88aaff;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        .desc{
+            color: #aaa;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .btn-list{
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .btn{
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-qq{
+            background: #12B7F5;
+            color: #fff;
+        }
+        .btn-wx{
+            background: #07C160;
+            color: #fff;
+        }
+        .btn-ks{
+            background: #FF5000;
+            color: #fff;
+        }
+        .btn-dy{
+            background: #000;
+            color: #fff;
+            border: 1px solid #ff2442;
+        }
+        .btn:hover{
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(136,170,255,0.5);
+        }
+        /* 复制成功提示 */
+        .toast{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.85);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+        .toast.show{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="avatar">灰冰</div>
+        <h1>灰冰</h1>
+        <p class="desc">Furry圈扩列｜欢迎来找我玩<br>温柔交友｜常驻香港</p>
+
+        <div class="btn-list">
+            <a href="https://qm.qq.com/q/LxO0y0xqss" target="_blank" class="btn btn-qq">📱 QQ 联系我</a>
+            <button class="btn btn-wx" id="wxBtn">💬 微信 复制加我</button>
+            <a href="https://v.kuaishou.com/Jg7r3911" target="_blank" class="btn btn-ks">🎮 快手主页</a>
+            <a href="https://v.douyin.com/jrmPvffuZnQ/" target="_blank" class="btn btn-dy">🎵 抖音主页</a>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div class="toast" id="toast">微信号已复制，去微信粘贴添加吧~</div>
+
+    <script>
+        // 微信复制功能
+        const wxBtn = document.getElementById('wxBtn');
+        const toast = document.getElementById('toast');
+        const wxId = 'San823016803'; // 你的微信号
+
+        wxBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(wxId).then(() => {
+                // 显示成功提示
+                toast.classList.add('show');
+                // 2秒后自动隐藏提示
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                // 兼容不支持自动复制的浏览器，手动提示
+                alert('你的微信号：' + wxId + '，请手动复制去微信添加~');
+            });
+        });
+    </script>
+</body>
+</html>
